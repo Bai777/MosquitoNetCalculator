@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MosquitoNetCalculator</string>
+    <string name="button_start">Поехали</string>
+    <string name="buttonTextExit">Выход</string>
+</resources>
