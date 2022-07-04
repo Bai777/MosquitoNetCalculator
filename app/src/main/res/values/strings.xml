@@ -2,4 +2,6 @@
     <string name="app_name">MosquitoNetCalculator</string>
     <string name="button_start">Поехали</string>
     <string name="buttonTextExit">Выход</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
