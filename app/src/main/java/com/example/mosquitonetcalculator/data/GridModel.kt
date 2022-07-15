@@ -2,6 +2,7 @@ package com.example.mosquitonetcalculator.data
 
 data class GridModel(
     val id: Int,
+    val name: String,
     val width: Double,
     val height: Double,
     val grid: String,
