@@ -7,21 +7,17 @@ import com.example.mosquitonetcalculator.data.GridModel
 import com.example.mosquitonetcalculator.databinding.MainScreenRecyclerItemBinding
 import com.example.mosquitonetcalculator.ui.BaseGridListFragment
 
-class MainAdapter : RecyclerView.Adapter<BaseViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     private var dataList: MutableList<GridModel> = mutableListOf()
     private var burgerListener: BaseGridListFragment.OnBurgerClickListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val binding = MainScreenRecyclerItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
         return MainViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(dataList[position])
     }
 
     override fun getItemCount(): Int = dataList.size
@@ -45,6 +41,10 @@ class MainAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     fun setData(data: List<GridModel>) {
         dataList = data.toMutableList()
         notifyDataSetChanged()
+    }
+
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+        holder.bind(dataList[position])
     }
 }
 
