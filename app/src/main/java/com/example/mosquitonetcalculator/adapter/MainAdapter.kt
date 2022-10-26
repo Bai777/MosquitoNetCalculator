@@ -7,8 +7,8 @@ import com.example.mosquitonetcalculator.data.GridModel
 import com.example.mosquitonetcalculator.databinding.MainScreenRecyclerItemBinding
 import com.example.mosquitonetcalculator.ui.BaseGridListFragment
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
-    private var dataList: MutableList<GridModel> = mutableListOf()
+class MainAdapter(dataList: MutableList<GridModel>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+//    private var dataList: MutableList<GridModel> = mutableListOf()
     private var burgerListener: BaseGridListFragment.OnBurgerClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -20,11 +20,14 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
         return MainViewHolder(binding)
     }
 
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+        holder.bind(dataList[position])
+    }
     override fun getItemCount(): Int = dataList.size
 
     inner class MainViewHolder(private val itemBinding: MainScreenRecyclerItemBinding) :
-        BaseViewHolder(itemBinding.root) {
-        override fun bind(grid: GridModel) {
+        RecyclerView.ViewHolder(itemBinding.root) {
+       fun bind(grid: GridModel) {
            itemBinding.apply {
                titleGridScreen.text = grid.name
                burgerMainScreen.setOnClickListener {
@@ -41,10 +44,6 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     fun setData(data: List<GridModel>) {
         dataList = data.toMutableList()
         notifyDataSetChanged()
-    }
-
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(dataList[position])
     }
 }
 

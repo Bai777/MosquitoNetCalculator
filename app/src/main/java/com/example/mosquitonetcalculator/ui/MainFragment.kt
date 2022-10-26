@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.mosquitonetcalculator.R
+import com.example.mosquitonetcalculator.adapter.MainAdapter
+import com.example.mosquitonetcalculator.data.GridModel
 import com.example.mosquitonetcalculator.databinding.FragmentMainBinding
 
 
@@ -14,6 +16,13 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding get() = _binding!!
+    private val adapter = MainAdapter(fillList())
+
+    private fun fillList(): MutableList<GridModel> {
+        val data = mutableListOf<GridModel>()
+        (0..30).forEach { i -> data.add() }
+        return data
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +34,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.mainScreenFragmentRecyclerView.adapter = adapter
         workWhitItemMenuInToolbar()
     }
 

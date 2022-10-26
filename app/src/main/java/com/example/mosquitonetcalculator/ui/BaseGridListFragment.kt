@@ -14,7 +14,7 @@ import com.example.mosquitonetcalculator.databinding.FragmentBaseGridListBinding
 
 class BaseGridListFragment : Fragment() {
 
-    internal val adapter = MainAdapter()
+    internal val adapter = MainAdapter(fillList())
     private var _binding: FragmentBaseGridListBinding? = null
     private val binding: FragmentBaseGridListBinding get() = _binding!!
 
